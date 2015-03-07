@@ -1,0 +1,25 @@
+{
+  "name": "javaRadioStatinMap",
+  "version": "0.0.0",
+  "description": "https://developers.google.com/maps/documentation/javascript/examples/map-simple?hl=ru",
+  "main": "index.html",
+  "dependencies": {
+    "gulp-connect": "~2.2.0",
+    "gulp": "~3.8.11"
+  },
+  "devDependencies": {
+    "gulp-open": "~0.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/showc7/javaRadioStatinMap.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/showc7/javaRadioStatinMap/issues"
+  }
+}

@@ -1,2 +1,4 @@
-# javaRadioStatinMap
-https://developers.google.com/maps/documentation/javascript/examples/map-simple?hl=ru
+Setup:
+    $npm install
+Execute
+    $gulp
