@@ -8,4 +8,6 @@ APP.mouseClick = function (event) {
 
 }
 
-document.addEventListener('load', APP.initialize.bind(APP));
+window.addEventListener('load', function (event) {
+    
+});
