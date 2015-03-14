@@ -20,48 +20,9 @@
     "unused"    : "vars",  // Warn on unused vars only, not function params
     "white"     : true,  // Strict whitespace rule checking
     "onevar"    : true,  // Only one var at the top of each function
+    "quotmark"  : true,
     "globals": {
-        // Libs
-        "$": false,
-        "_": true,
-        "h5": false,
-        "QUnit": false,
-        "dust": false,
-        "doT": true,
-
-        // Development
-        "console": false,
-
-        // DAWN
-        "DAWN": false,
-        "MVCAdapter": false,
-        "xLoadFile": false,
-        "xLoadJS": true,
-        "xUseCompile": true,
-        "xUseLocalDevOverrides": true,
-        "xLocalDev": true,
-        "xRunLocalDev": false,
-        "xRunTests": true,
-        "Esprit": true,
-        "Floor": false,
-        "NAF": false,
-
-        // QUnit globals
-        "test": false,
-        "asyncTest": false,
-        "ok": false,
-        "deepEqual": false,
-        "equal": false,
-        "notDeepEqual": false,
-        "notEqual": false,
-        "notStrictEqual": false,
-        "strictEqual": false,
-        "stop" : false,
-        "start" : false,
-        "expect" : false,
-
-        // requireJS
-        "define": false,
-        "require": false
+        "APP": false,
+        "Cell": true
     }
 }

@@ -10,7 +10,6 @@ gulp.task('connect', function() {
 });
 
 gulp.task('open', function(){
-    console.log('open');
     gulp.src('./index.html')
     .pipe(open('', {
         url:'http://localhost:8080/index.html',

@@ -1,5 +1,3 @@
-APP.polygon = [[]];
-
 APP.initialize = function (event) {
 	console.log(this);
 }
