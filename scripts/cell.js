@@ -8,7 +8,3 @@ function Cell(options) {
 	this.opacity = options.opacity || 0;
 	this.height = 0;
 }
-
-Cell.prototype.distance = function(cell) {
-    
-};
