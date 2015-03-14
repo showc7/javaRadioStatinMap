@@ -16,5 +16,7 @@ Drawer.prototype.createEventListener = function (callback) {
 };
 
 Drawer.prototype.drawCells = function (cells) {
-    
+    cells.forEach(function (item, index) {
+        console.log(item);
+    });
 };
