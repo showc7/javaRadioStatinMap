@@ -9,6 +9,8 @@ APP.initialize = function (event) {
 }
 
 APP.mouseClick = function (event) {
+    this.drawer.clearMarkers();
+    this.drawer.drawMarker(event);
     this.drawer.drawCells(this.core.calculate(new Point(event.latLng.D, event.latLng.k)));
 }
 

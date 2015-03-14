@@ -1,5 +1,6 @@
 function Drawer() {
     this.mapContainer = document.querySelector('#mapContainer');
+    this.markers = [];
 }
 
 Drawer.prototype.createMap = function () {
@@ -16,17 +17,33 @@ Drawer.prototype.createEventListener = function (callback) {
 };
 
 Drawer.prototype.drawCells = function (cells) {
-    var rectangle,
-        rectOptions = {
-          fillColor: '#00FFFF',
-          fillOpacity: 0.5,
-          strokeWeight: 0,
-          map: APP.drawer.map
-        };
     cells.forEach(function (item, index) {
-        rectangle = new google.maps.Rectangle();
-        rectOptions.fillOpacity = item.opacity;
-        rectOptions.bounds = new google.maps.LatLngBounds(item.leftUpCoordinate, item.leftUpCoordinate);
-        rectangle.setOptions(rectOptions);
+        if (item.opacity && item.leftUpCoordinate && item.rightDownCoordinate) {
+            this.markers.push(
+                new google.maps.Rectangle({
+                    fillColor: '#FF0000',
+                    fillOpacity: item.opacity,
+                    strokeWeight: 0,
+                    map: APP.drawer.map,
+                    bounds: new google.maps.LatLngBounds(
+                        new google.maps.LatLng(item.leftUpCoordinate.y, item.leftUpCoordinate.x),
+                        new google.maps.LatLng(item.rightDownCoordinate.y, item.rightDownCoordinate.x))
+            }));
+        }
     });
+};
+
+Drawer.prototype.clearMarkers = function () {
+    this.markers.forEach(function (item, index) {
+        item.setMap(null);
+    });
+    this.markers.length = 0;
+};
+
+Drawer.prototype.drawMarker = function(event) {
+    this.markers.push(new google.maps.Marker({
+        position: event.latLng,
+        title:"Radio Station",
+        map: APP.drawer.map
+    }));
 };
