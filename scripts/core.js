@@ -29,7 +29,7 @@ Core.prototype.calculate = function(point) {
 	for(var i = 0; i < width; i++) {
 		for(var j = 0; j < heigth; j++) {
 			var radius = Math.sqrt(Math.pow(Math.abs(stationX - i),2) + Math.pow(Math.abs(stationY - j),2));
-			resultCells[i + j * width].opacity = calculateOpacity(radius);
+			resultCells[i + j * width].opacity = this.calculateOpacity(radius);
 
 		}
 	}
