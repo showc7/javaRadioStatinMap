@@ -1,5 +1,5 @@
 APP.log = function (message) {
-    if (!this.APP.disableLogs) {
+    if (!this.conf.disableLogs) {
         console.log(message);
     }
 }

@@ -28,5 +28,5 @@ APP.conf = {
 
     kilometersInDegree: 1 / 110.54,
 
-    disableLogs: false
+    disableLogs: true
 };
