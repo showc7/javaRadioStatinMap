@@ -17,23 +17,36 @@ Drawer.prototype.createEventListener = function (event, callback) {
     google.maps.event.addListener(this.map, event, callback);
 };
 
-Drawer.prototype.drawCells = function (cells) {
+Drawer.prototype.drawCells = function (cells, event, callback) {
     var self = this;
-    cells = [new Cell({leftUpCoordinate: new Point(64.32087157990324, 42.5390625), rightDownCoordinate: new Point(47.040182144806664, 136.0546875), opacity: 0.35}),
-             new Cell({leftUpCoordinate: new Point(61.77312286453148, -105.46875), rightDownCoordinate: new Point(25.16517336866393, 18.984375), opacity: 0.35})];
+    //cells = [new Cell({leftUpCoordinate: new Point(64.32087157990324, 42.5390625), rightDownCoordinate: new Point(47.040182144806664, 136.0546875), opacity: 0.35}),
+    //         new Cell({leftUpCoordinate: new Point(61.77312286453148, -105.46875), rightDownCoordinate: new Point(25.16517336866393, 18.984375), opacity: 0.35})];
     cells.forEach(function (item, index) {
         if (item.opacity && item.leftUpCoordinate && item.rightDownCoordinate) {
             self.markers.push(
                 new google.maps.Rectangle({
                     fillColor: '#000000',
                     fillOpacity: item.opacity,
-                    strokeWeight: 2,
-                    strokeColor: '#FFFFFF',
+                    strokeWeight: 0,
                     map: self.map,
                     bounds: new google.maps.LatLngBounds(
                         new google.maps.LatLng(item.leftUpCoordinate.x, item.leftUpCoordinate.y),
                         new google.maps.LatLng(item.rightDownCoordinate.x, item.rightDownCoordinate.y))
             }));
+
+            self.markers.push(new google.maps.Marker({
+                position: new google.maps.LatLng(item.leftUpCoordinate.x, item.leftUpCoordinate.y),
+                title:"Left",
+                map: self.map
+            }));
+
+            self.markers.push(new google.maps.Marker({
+                position: new google.maps.LatLng(item.rightDownCoordinate.x, item.rightDownCoordinate.y),
+                title:"Right",
+                map: self.map
+            }));
+
+            google.maps.event.addListener(self.markers[self.markers.length - 1], 'click', callback);
         }
     });
 };

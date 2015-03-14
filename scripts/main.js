@@ -18,7 +18,7 @@ APP.mouseClick = function (event) {
     console.log(event.latLng);
     this.drawer.clearMarkers();
     this.drawer.drawMarker(event);
-    this.drawer.drawCells(this.core.calculate(new Point(event.latLng.D, event.latLng.k)));
+    this.drawer.drawCells(this.core.calculate(new Point(event.latLng.D, event.latLng.k)), 'click', APP.mouseClick.bind(APP));
 }
 
 window.addEventListener('load', function (event) {
