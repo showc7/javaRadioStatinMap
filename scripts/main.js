@@ -11,7 +11,7 @@ APP.initialize = function (event) {
     // draw map
     this.drawer.createMap();
     // add mouse click event
-    this.drawer.createEventListener(APP.mouseClick.bind(APP));
+    this.drawer.createEventListener('click', APP.mouseClick.bind(APP));
 }
 
 APP.mouseClick = function (event) {

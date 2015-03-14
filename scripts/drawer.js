@@ -13,23 +13,26 @@ Drawer.prototype.createMap = function () {
     this.map = new google.maps.Map(this.mapContainer, mapOptions);
 };
 
-Drawer.prototype.createEventListener = function (callback) {
-    google.maps.event.addListener(this.map, 'click', callback);
+Drawer.prototype.createEventListener = function (event, callback) {
+    google.maps.event.addListener(this.map, event, callback);
 };
 
 Drawer.prototype.drawCells = function (cells) {
     var self = this;
+    cells = [new Cell({leftUpCoordinate: new Point(64.32087157990324, 42.5390625), rightDownCoordinate: new Point(47.040182144806664, 136.0546875), opacity: 0.35}),
+             new Cell({leftUpCoordinate: new Point(61.77312286453148, -105.46875), rightDownCoordinate: new Point(25.16517336866393, 18.984375), opacity: 0.35})];
     cells.forEach(function (item, index) {
         if (item.opacity && item.leftUpCoordinate && item.rightDownCoordinate) {
             self.markers.push(
                 new google.maps.Rectangle({
-                    fillColor: '#FF0000',
+                    fillColor: '#000000',
                     fillOpacity: item.opacity,
-                    strokeWeight: 0,
+                    strokeWeight: 2,
+                    strokeColor: '#FFFFFF',
                     map: self.map,
                     bounds: new google.maps.LatLngBounds(
-                        new google.maps.LatLng(item.leftUpCoordinate.y, item.leftUpCoordinate.x),
-                        new google.maps.LatLng(item.rightDownCoordinate.y, item.rightDownCoordinate.x))
+                        new google.maps.LatLng(item.leftUpCoordinate.x, item.leftUpCoordinate.y),
+                        new google.maps.LatLng(item.rightDownCoordinate.x, item.rightDownCoordinate.y))
             }));
         }
     });

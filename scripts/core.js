@@ -28,7 +28,7 @@ Core.prototype.calculate = function(point) {
 			// distance in kilometers
 			var radius = Math.sqrt(Math.pow(Math.abs(stationX - i),2) + Math.pow(Math.abs(stationY - j),2)) * APP.conf.cellSize;
 			var mapCoordinate = this.getMapCoordinates(point,{x: i, y: j});
-			APP.log(mapCoordinate);
+			console.log(mapCoordinate);
 			resultCells[i + j * width] = {};
 			resultCells[i + j * width].opacity = this.calculateOpacity(radius);
 			resultCells[i + j * width].leftUpCoordinate = new Point(mapCoordinate.latitude,mapCoordinate.longitude);
@@ -36,12 +36,12 @@ Core.prototype.calculate = function(point) {
 			resultCells[i + j * width].rightDownCoordinate = new Point(mapCoordinate.latitude,mapCoordinate.longitude);
 		}
 	}
-	console.log(resultCells[8]);
-	return [resultCells[8]];
+	console.log(resultCells);
+	return resultCells.slice(8, 9);
 };
 
 Core.prototype.calculateOpacity = function(radius) {
-	APP.log("radius : " + radius);
+	console.log("radius : " + radius);
 	return	(APP.conf.powerOfTransmitter +
 			APP.conf.receivingAntennaGain +
 			APP.conf.transmittingAntennaGain -
