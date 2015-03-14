@@ -4,7 +4,7 @@ function Cell(options) {
 	// in degrees
 	this.leftUpCoordinate = options.leftUpCoordinate || 0;
 	// in degrees
-	this.rightDownCoordinate = options.leftUpCoordinate || 0;
+	this.rightDownCoordinate = options.rightDownCoordinate || 0;
 	this.opacity = options.opacity || 0;
 	this.height = 0;
 }
