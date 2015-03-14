@@ -31,13 +31,15 @@ Core.prototype.calculate = function(point) {
 			console.log(mapCoordinate);
 			resultCells[i + j * width] = {};
 			resultCells[i + j * width].opacity = this.calculateOpacity(radius);
-			resultCells[i + j * width].leftUpCoordinate = new Point(mapCoordinate.latitude,mapCoordinate.longitude);
-			mapCoordinate = this.getMapCoordinates(point,{x: i+1, y: j+1});
 			resultCells[i + j * width].rightDownCoordinate = new Point(mapCoordinate.latitude,mapCoordinate.longitude);
+			//resultCells[i + j * width].leftUpCoordinate = new Point(mapCoordinate.longitude,mapCoordinate.latitude);
+			mapCoordinate = this.getMapCoordinates(point,{x: i+1, y: j+1});
+			resultCells[i + j * width].leftUpCoordinate = new Point(mapCoordinate.latitude,mapCoordinate.longitude);
+			//resultCells[i + j * width].leftUpCoordinate = new Point(mapCoordinate.longitude,mapCoordinate.latitude);
 		}
 	}
 	console.log(resultCells);
-	return resultCells.slice(8, 9);
+	return resultCells;//.slice(0, 1);
 };
 
 Core.prototype.calculateOpacity = function(radius) {
