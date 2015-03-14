@@ -29,6 +29,7 @@ Core.prototype.calculate = function(point) {
 	for(var i = 0; i < width; i++) {
 		for(var j = 0; j < heigth; j++) {
 			var radius = Math.sqrt(Math.pow(Math.abs(stationX - i),2) + Math.pow(Math.abs(stationY - j),2));
+			resultCells[i + j * width] = {};
 			resultCells[i + j * width].opacity = this.calculateOpacity(radius);
 
 		}
@@ -44,7 +45,7 @@ Core.prototype.calculateOpacity = function(radius) {
 			(Math.pow(4 * Math.PI * radius / APP.conf.waveLength,2) +
 			APP.conf.lossesInReceivingAntenna +
 			APP.conf.loosesInTransmittingAntenna) +
-			freeSpacePowerLoose(radius) / APP.conf.transmittingAntennaGain;
+			this.freeSpacePowerLoose(radius) / APP.conf.transmittingAntennaGain;
 };
 
 Core.prototype.freeSpacePowerLoose = function(radius) {
