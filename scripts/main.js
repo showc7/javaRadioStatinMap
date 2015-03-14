@@ -5,11 +5,11 @@ APP.initialize = function (event) {
     // draw map
     this.drawer.createMap();
     // add mouse click event
+    this.drawer.createEventListener(APP.mouseClick.bind(APP));
 }
 
 APP.mouseClick = function (event) {
-    // call Core calculate
-    // drawer (calculated data)
+    drawer.drawCells(this.core.calculate(new Point(event.latLng.D, event.latLng.k)));
 }
 
 window.addEventListener('load', function (event) {
