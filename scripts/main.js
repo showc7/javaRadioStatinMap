@@ -1,3 +1,9 @@
+APP.log = function (message) {
+    if (!this.APP.disableLogs) {
+        console.log(message);
+    }
+}
+
 APP.initialize = function (event) {
     // create Core and Drawer objects
     this.core = new Core();
@@ -9,6 +15,7 @@ APP.initialize = function (event) {
 }
 
 APP.mouseClick = function (event) {
+    console.log(event.latLng);
     this.drawer.clearMarkers();
     this.drawer.drawMarker(event);
     this.drawer.drawCells(this.core.calculate(new Point(event.latLng.D, event.latLng.k)));
