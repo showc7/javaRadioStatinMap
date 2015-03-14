@@ -16,7 +16,17 @@ Drawer.prototype.createEventListener = function (callback) {
 };
 
 Drawer.prototype.drawCells = function (cells) {
+    var rectangle,
+        rectOptions = {
+          fillColor: '#00FFFF',
+          fillOpacity: 0.5,
+          strokeWeight: 0,
+          map: APP.drawer.map
+        };
     cells.forEach(function (item, index) {
-        console.log(item);
+        rectangle = new google.maps.Rectangle();
+        rectOptions.fillOpacity = item.opacity;
+        rectOptions.bounds = new google.maps.LatLngBounds(item.leftUpCoordinate, item.leftUpCoordinate);
+        rectangle.setOptions(rectOptions);
     });
 };
