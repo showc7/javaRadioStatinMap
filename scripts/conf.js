@@ -1,5 +1,6 @@
+this.APP = {};
 APP.conf = {
-    defaultMapLocation: new Cell(53.902, 27.556),
+    defaultMapLocation: new Point(53.902, 27.556),
 
     // size of visibility square in mitres
     cellSize: 10,

@@ -22,7 +22,9 @@
     "onevar"    : true,  // Only one var at the top of each function
     "quotmark"  : true,
     "globals": {
-        "APP": false,
-        "Cell": true
+        "APP": true,
+        "Cell": true,
+        "Drawer": true,
+        "google": true
     }
 }
