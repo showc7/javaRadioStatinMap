@@ -9,7 +9,7 @@ APP.initialize = function (event) {
 }
 
 APP.mouseClick = function (event) {
-    drawer.drawCells(this.core.calculate(new Point(event.latLng.D, event.latLng.k)));
+    this.drawer.drawCells(this.core.calculate(new Point(event.latLng.D, event.latLng.k)));
 }
 
 window.addEventListener('load', function (event) {
