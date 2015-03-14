@@ -2,19 +2,12 @@ function Core() {
     APP.conf.numberOfCells =  APP.conf.maxStationSignalLength / APP.conf.cellSize;
 }
 
-// return number miters in pixel
-Core.prototype.convertPixelsToMiters = function() {
-	return -1;
-};
-
-Core.prototype.initialize = function() {
-	
-};
 // return array of cells
 Core.prototype.calculate = function(point) {
 	//console.log(point);
 	var resultCells = [];
 
+	//
 	var width = APP.conf.maxStationSignalLength / APP.conf.cellSize * 2;
 	var height = width;
 
