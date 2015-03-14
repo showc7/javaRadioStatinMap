@@ -6,23 +6,25 @@ APP.conf = {
     cellSize: 10,
 
     // max station signal length in miters
-    maxStationSignalLength: 100,
+    maxStationSignalLength: 50,
 
     // powero f transmitter in watts
-    powerOfTransmitter: 20,
+    powerOfTransmitter: 400,
 
     // gain of the receiving antenna
-    receivingAntennaGain: 1,
+    receivingAntennaGain: 7,
 
     // gain of the transmitting antenna
-    transmittingAntennaGain: 1,
+    transmittingAntennaGain: 6,
 
     // looses in receiving antenna
-    lossesInReceivingAntenna: 0.1,
+    lossesInReceivingAntenna: 5,
 
     // looses in transmitting antenna
-    loosesInTransmittingAntenna: 0.1,
+    loosesInTransmittingAntenna: 0,
 
     // station wave length
-    waveLength: 0.15
+    waveLength: 0.353,
+
+    kilometersInDegree: 1 / 110.54
 };
