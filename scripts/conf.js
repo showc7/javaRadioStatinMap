@@ -26,5 +26,7 @@ APP.conf = {
     // station wave length
     waveLength: 0.353,
 
-    kilometersInDegree: 1 / 110.54
+    kilometersInDegree: 1 / 110.54,
+
+    disableLogs: false
 };
