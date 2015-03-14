@@ -3,17 +3,19 @@ var gulp = require('gulp'),
     open = require('gulp-open');
 
 gulp.task('connect', function() {
-    connect.server({
-        root: './'
-    });
+  connect.server({
+    root: '',
+    livereload: true
+  });
 });
 
 gulp.task('open', function(){
-    var options = {
-        url: 'http://localhost:8080/index.html'
-    };
+    console.log('open');
     gulp.src('./index.html')
-    .pipe(open('', options));
-});
+    .pipe(open('', {
+        url:'http://localhost:8080/index.html',
+        arr: 'google-chrome'
+    }));
+})
 
 gulp.task('default', ['connect', 'open']);
