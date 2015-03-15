@@ -22,7 +22,7 @@ Core.prototype.calculate = function(point) {
 			var radius = Math.sqrt(Math.pow(Math.abs(stationX - i),2) + Math.pow(Math.abs(stationY - j),2)) * APP.conf.cellSize;
 			// coordiante of current cell
 			var mapCoordinate = this.getMapCoordinates(point,{x: i, y: j});
-			console.log(mapCoordinate);
+			APP.log(mapCoordinate);
 			resultCells[i + j * width] = {};
 			resultCells[i + j * width].opacity = this.calculateOpacity(radius);
 			resultCells[i + j * width].opacity = resultCells[i + j * width].opacity < 0 ? 0 : resultCells[i + j * width].opacity;
@@ -37,12 +37,12 @@ Core.prototype.calculate = function(point) {
 			resultCells[i + j * width].rightDownCoordinate = new Point(mapCoordinate.longitude,mapCoordinate.latitude);
 		}
 	}
-	console.log(resultCells);
+	APP.log(resultCells);
 	return resultCells;//.slice(1, 2);
 };
 
 Core.prototype.calculateOpacity = function(radius) {
-	console.log("radius : " + radius);
+	APP.log("radius : " + radius);
 	return	(APP.conf.powerOfTransmitter +
 			APP.conf.receivingAntennaGain +
 			APP.conf.transmittingAntennaGain -
