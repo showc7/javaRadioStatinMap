@@ -24,7 +24,8 @@ Core.prototype.calculate = function(point) {
 			var mapCoordinate = this.getMapCoordinates(point,{x: i, y: j});
 			console.log(mapCoordinate);
 			resultCells[i + j * width] = {};
-			resultCells[i + j * width].opacity = this.calculateOpacity(radius) / 2;
+			resultCells[i + j * width].opacity = this.calculateOpacity(radius);
+			resultCells[i + j * width].opacity = resultCells[i + j * width].opacity < 0 ? 0 : resultCells[i + j * width].opacity;
 			//resultCells[i + j * width].rightDownCoordinate = new Point(mapCoordinate.latitude,mapCoordinate.longitude);
 			//resultCells[i + j * width].rightDownCoordinate = new Point(mapCoordinate.longitude,mapCoordinate.latitude);
 			resultCells[i + j * width].leftUpCoordinate = new Point(mapCoordinate.longitude,mapCoordinate.latitude);
