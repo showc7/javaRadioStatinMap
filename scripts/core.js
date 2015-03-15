@@ -24,17 +24,20 @@ Core.prototype.calculate = function(point) {
 			var mapCoordinate = this.getMapCoordinates(point,{x: i, y: j});
 			console.log(mapCoordinate);
 			resultCells[i + j * width] = {};
-			resultCells[i + j * width].opacity = this.calculateOpacity(radius);
+			resultCells[i + j * width].opacity = this.calculateOpacity(radius) / 2;
 			//resultCells[i + j * width].rightDownCoordinate = new Point(mapCoordinate.latitude,mapCoordinate.longitude);
-			resultCells[i + j * width].rightDownCoordinate = new Point(mapCoordinate.longitude,mapCoordinate.latitude);
+			//resultCells[i + j * width].rightDownCoordinate = new Point(mapCoordinate.longitude,mapCoordinate.latitude);
+			resultCells[i + j * width].leftUpCoordinate = new Point(mapCoordinate.longitude,mapCoordinate.latitude);
+			
 			// coordinate of next cell
 			mapCoordinate = this.getMapCoordinates(point,{x: i+1, y: j+1});
 			//resultCells[i + j * width].leftUpCoordinate = new Point(mapCoordinate.latitude,mapCoordinate.longitude);
-			resultCells[i + j * width].leftUpCoordinate = new Point(mapCoordinate.longitude,mapCoordinate.latitude);
+			//resultCells[i + j * width].leftUpCoordinate = new Point(mapCoordinate.longitude,mapCoordinate.latitude);
+			resultCells[i + j * width].rightDownCoordinate = new Point(mapCoordinate.longitude,mapCoordinate.latitude);
 		}
 	}
 	console.log(resultCells);
-	return resultCells;//.slice(0, 1);
+	return resultCells;//.slice(1, 2);
 };
 
 Core.prototype.calculateOpacity = function(radius) {
