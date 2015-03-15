@@ -1,5 +1,5 @@
 function Core() {
-    APP.conf.numberOfCells =  APP.conf.maxStationSignalLength / APP.conf.cellSize;
+    APP.conf.numberOfCells =  APP.conf.maxStationSignalLength / APP.conf.cellSize * 2;
 }
 
 // return array of cells
@@ -7,7 +7,7 @@ Core.prototype.calculate = function(point) {
 	//console.log(point);
 	var resultCells = [];
 
-	//
+	// map width and height in cells
 	var width = APP.conf.maxStationSignalLength / APP.conf.cellSize * 2;
 	var height = width;
 
@@ -20,12 +20,14 @@ Core.prototype.calculate = function(point) {
 		for(var j = 0; j < height; j++) {
 			// distance in kilometers
 			var radius = Math.sqrt(Math.pow(Math.abs(stationX - i),2) + Math.pow(Math.abs(stationY - j),2)) * APP.conf.cellSize;
+			// coordiante of current cell
 			var mapCoordinate = this.getMapCoordinates(point,{x: i, y: j});
 			console.log(mapCoordinate);
 			resultCells[i + j * width] = {};
 			resultCells[i + j * width].opacity = this.calculateOpacity(radius);
 			//resultCells[i + j * width].rightDownCoordinate = new Point(mapCoordinate.latitude,mapCoordinate.longitude);
 			resultCells[i + j * width].rightDownCoordinate = new Point(mapCoordinate.longitude,mapCoordinate.latitude);
+			// coordinate of next cell
 			mapCoordinate = this.getMapCoordinates(point,{x: i+1, y: j+1});
 			//resultCells[i + j * width].leftUpCoordinate = new Point(mapCoordinate.latitude,mapCoordinate.longitude);
 			resultCells[i + j * width].leftUpCoordinate = new Point(mapCoordinate.longitude,mapCoordinate.latitude);
@@ -55,11 +57,13 @@ Core.prototype.getMapCoordinates = function(center, point) {
 };
 
 Core.prototype.calculateLatitude = function(center, point) {
-	return center.x - Math.abs(APP.conf.numberOfCells - point.x) * APP.conf.cellSize / 1000 * APP.conf.kilometersInDegree;
+	//return center.x - Math.abs(APP.conf.numberOfCells / 2 - point.x) * APP.conf.cellSize / 1000 * APP.conf.kilometersInDegree;
+	return center.x - (APP.conf.numberOfCells / 2 - point.x) * APP.conf.cellSize / 1000 * APP.conf.kilometersInDegree;
 };
 
 Core.prototype.calculateLongitude = function(center, point, latitude) {
-	return center.y - Math.abs(APP.conf.numberOfCells - point.y) * APP.conf.cellSize / 1000 * (1 / (111.320/* * Math.cos(latitude)*/));
+	//return center.y - Math.abs(APP.conf.numberOfCells / 2 - point.y) * APP.conf.cellSize / 1000 * (1 / (111.320/* * Math.cos(latitude)*/));
+	return center.y - (APP.conf.numberOfCells / 2 - point.y) * APP.conf.cellSize / 1000 * (1 / (111.320/* * Math.cos(latitude)*/));
 };
 
 Core.prototype.freeSpacePowerLoose = function(radius) {
